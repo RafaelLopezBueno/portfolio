@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rafael López | Portafolio DAW</title>
+    <link rel="stylesheet" href="stylePortfolio.css">
+</head>
+<body>
+
+    <div id="bg-canvas"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <header>
+        <nav>
+            <div class="logo">&lt;RLB&gt;</div>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Perfil</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <h1 class="fade-in">Rafael <span class="highlight"></span></h1>
+            <p>Estudiante de Desarrollo de Aplicaciones Web (DAW)</p>
+        </section>
+
+        <section id="sobre-mi" class="bento-container">
+            
+            <div class="bento-item grande">
+                <h2>Sobre mí</h2>
+                <p>Soy un desarrollador en formación con mucha iniciativa y hambre de conocimiento. Actualmente curso 1º de DAW, donde exploro cómo construir soluciones web sólidas. Me apasiona el aprendizaje continuo y enfrentarme a nuevos retos técnicos para transformar ideas en código funcional.</p>
+            </div>
+            
+            <div class="bento-item">
+                <h3>Stack Técnico</h3>
+                <div class="skills-grid">
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                    <span>JavaScript</span>
+                    <span>Java</span>
+                    <span>PHP</span>
+                    <span>VS Code</span>
+                    <span>Git</span>
+                </div>
+            </div>
+
+            <div class="bento-item">
+                <h3>Conecta conmigo</h3>
+                <p>¿Interesado en mi perfil?</p>
+                <a href="https://www.linkedin.com/in/rafael-l%C3%B3pez-bueno-133a22369/" target="_blank" class="btn-send" style="text-decoration:none; display:inline-block; text-align:center;">Visitar LinkedIn</a>
+            </div>
+
+            <div class="bento-item grande" id="proyectos">
+                <h3>Proyectos en el horno 🛠️</h3>
+                <p>Como estudiante de DAW, estoy trabajando en mis primeras aplicaciones reales y lógica de negocio. Pronto verás aquí mis avances con Java y arquitecturas web modernas.</p>
+                <div class="mini-tag" style="color: var(--accent-color); font-size: 0.8rem; margin-top: 10px;">Status: Aprendiendo cada día</div>
+            </div>
+
+            <div class="bento-item" id="contacto">
+                <h3>Contacto</h3>
+                <form class="contact-form">
+                    <input type="email" placeholder="Tu correo electrónico" required>
+                    <textarea placeholder="Cuéntame en qué puedo ayudarte..." rows="3"></textarea>
+                    <button type="submit" class="btn-send">Enviar Mensaje</button>
+                </form>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>
