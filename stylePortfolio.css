@@ -9,7 +9,7 @@
 
 /* RESET GENERAL */
 * { 
-    cursor: none !important; /* Oculta el puntero original */
+    cursor: none !important; /* Mantenemos el cursor personalizado */
     box-sizing: border-box; 
     margin: 0;
     padding: 0;
@@ -21,16 +21,16 @@ html {
 
 body {
     background-color: var(--bg-color);
-    /* Degradado sutil para dar profundidad */
+    /* Degradado Mesh para evitar el negro sólido */
     background-image: radial-gradient(circle at 50% -20%, #1e293b, transparent);
     background-attachment: fixed;
     color: var(--text-color);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Inter', -apple-system, sans-serif;
     overflow-x: hidden;
     line-height: 1.6;
 }
 
-/* CONTENEDOR DE PARTÍCULAS */
+/* CONTENEDOR DE PARTÍCULAS (JS) */
 #bg-canvas { 
     position: fixed; 
     top: 0; 
@@ -41,45 +41,31 @@ body {
     pointer-events: none; 
 }
 
-/* ESTILO DE LAS PARTÍCULAS GENERADAS POR JS */
 .particle {
     position: absolute;
     background: var(--accent-color);
     border-radius: 50%;
     pointer-events: none;
-    box-shadow: 0 0 12px var(--accent-color); /* Brillo intenso */
+    box-shadow: 0 0 12px var(--accent-color);
 }
 
 /* CURSOR PERSONALIZADO */
 .cursor-dot { 
-    position: fixed; 
-    width: 8px; 
-    height: 8px; 
-    background: var(--accent-color); 
-    border-radius: 50%; 
-    z-index: 10000; 
-    transform: translate(-50%, -50%); 
-    pointer-events: none; 
+    position: fixed; width: 8px; height: 8px; background: var(--accent-color); 
+    border-radius: 50%; z-index: 10000; transform: translate(-50%, -50%); pointer-events: none; 
 }
-
 .cursor-outline { 
-    position: fixed; 
-    width: 35px; 
-    height: 35px; 
-    border: 2px solid var(--accent-color); 
-    border-radius: 50%; 
-    z-index: 10000; 
-    transform: translate(-50%, -50%); 
-    pointer-events: none; 
+    position: fixed; width: 35px; height: 35px; border: 2px solid var(--accent-color); 
+    border-radius: 50%; z-index: 10000; transform: translate(-50%, -50%); pointer-events: none; 
     transition: transform 0.15s ease-out;
 }
 
-/* NAVEGACIÓN */
+/* NAVEGACIÓN Y LOGO */
 nav { 
     display: flex; 
     justify-content: space-between; 
     align-items: center;
-    padding: 25px 10%; 
+    padding: 15px 10%; /* Ajustado para que el logo no ocupe demasiado */
     position: fixed; 
     width: 100%; 
     z-index: 100; 
@@ -87,10 +73,16 @@ nav {
     border-bottom: 1px solid var(--glass-border);
 }
 
-.logo {
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: var(--accent-color);
+.nav-logo {
+    height: 45px; /* Altura controlada para el logo RLB */
+    width: auto;
+    display: block;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.nav-logo:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 8px var(--accent-color)); /* Brillo al pasar el ratón */
 }
 
 nav ul { 
@@ -122,17 +114,10 @@ nav ul li a:hover {
     text-align: center;
 }
 
-.hero h1 { 
-    font-size: clamp(2.5rem, 8vw, 4rem); 
-    margin-bottom: 10px;
-}
+.hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); }
+.highlight { color: var(--accent-color); text-shadow: 0 0 20px rgba(0, 242, 255, 0.3); }
 
-.highlight {
-    color: var(--accent-color);
-    text-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
-}
-
-/* BENTO GRID LAYOUT */
+/* BENTO GRID */
 .bento-container {
     display: grid; 
     grid-template-columns: repeat(3, 1fr); 
@@ -148,34 +133,16 @@ nav ul li a:hover {
     border-radius: 24px;
     padding: 30px;
     backdrop-filter: blur(12px);
-    opacity: 0; /* Para el efecto de revelado con JS */
+    opacity: 0; 
     transform: translateY(30px);
     transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.bento-item.visible { 
-    opacity: 1; 
-    transform: translateY(0); 
-}
-
-.bento-item:hover { 
-    border-color: var(--accent-color);
-    box-shadow: 0 10px 30px rgba(0, 242, 255, 0.1);
-}
-
-/* Distribución de las cajas grandes */
-.grande { 
-    grid-column: span 2; 
-}
+.bento-item.visible { opacity: 1; transform: translateY(0); }
+.grande { grid-column: span 2; }
 
 /* SKILLS TAGS */
-.skills-grid { 
-    display: flex; 
-    flex-wrap: wrap; 
-    gap: 10px; 
-    margin-top: 15px; 
-}
-
+.skills-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
 .skills-grid span { 
     background: rgba(0, 242, 255, 0.1); 
     color: var(--accent-color); 
@@ -185,53 +152,22 @@ nav ul li a:hover {
     border: 1px solid rgba(0, 242, 255, 0.2);
 }
 
-/* FORMULARIO Y BOTONES */
-.contact-form { 
-    display: flex; 
-    flex-direction: column; 
-    gap: 12px; 
-    margin-top: 15px; 
-}
-
-.contact-form input, 
-.contact-form textarea { 
+/* FORMULARIO */
+.contact-form { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
+.contact-form input, .contact-form textarea { 
     background: rgba(255, 255, 255, 0.05); 
     border: 1px solid var(--glass-border); 
-    color: white; 
-    padding: 12px; 
-    border-radius: 10px;
-    outline: none;
-}
-
-.contact-form input:focus {
-    border-color: var(--accent-color);
+    color: white; padding: 12px; border-radius: 10px; outline: none;
 }
 
 .btn-send { 
-    background: var(--accent-color); 
-    color: #030712; 
-    border: none; 
-    padding: 12px; 
-    border-radius: 10px; 
-    font-weight: bold; 
-    width: 100%; 
-    transition: 0.3s;
+    background: var(--accent-color); color: #030712; border: none; 
+    padding: 12px; border-radius: 10px; font-weight: bold; width: 100%; cursor: none;
 }
 
-.btn-send:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 242, 255, 0.4);
-}
-
-/* RESPONSIVIDAD PARA MÓVILES */
+/* RESPONSIVIDAD */
 @media (max-width: 900px) {
-    .bento-container {
-        grid-template-columns: 1fr;
-    }
-    .grande {
-        grid-column: span 1;
-    }
-    .hero h1 {
-        font-size: 2.5rem;
-    }
+    .bento-container { grid-template-columns: 1fr; }
+    .grande { grid-column: span 1; }
+    nav { padding: 15px 5%; }
 }
