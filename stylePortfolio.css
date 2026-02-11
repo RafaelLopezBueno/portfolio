@@ -1,15 +1,16 @@
-/* VARIABLES DE COLOR Y ESTILO */
+/* =========================================
+   VARIABLES Y CONFIGURACIÓN BASE
+   ========================================= */
 :root {
     --bg-color: #030712; 
-    --accent-color: #00f2ff;
+    --accent-color: #00f2ff; /* Cian neón */
     --text-color: #f1f5f9;
     --glass-border: rgba(255, 255, 255, 0.1);
     --card-bg: rgba(255, 255, 255, 0.03);
 }
 
-/* RESET GENERAL */
 * { 
-    cursor: none !important; /* Mantenemos el cursor personalizado */
+    cursor: none !important; /* Esconde el ratón estándar para usar el personalizado */
     box-sizing: border-box; 
     margin: 0;
     padding: 0;
@@ -21,16 +22,18 @@ html {
 
 body {
     background-color: var(--bg-color);
-    /* Degradado Mesh para evitar el negro sólido */
+    /* Gradiente radial para profundidad (no es negro puro) */
     background-image: radial-gradient(circle at 50% -20%, #1e293b, transparent);
     background-attachment: fixed;
     color: var(--text-color);
-    font-family: 'Inter', -apple-system, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
     line-height: 1.6;
 }
 
-/* CONTENEDOR DE PARTÍCULAS (JS) */
+/* =========================================
+   FONDO INTERACTIVO (PARTÍCULAS)
+   ========================================= */
 #bg-canvas { 
     position: fixed; 
     top: 0; 
@@ -41,6 +44,7 @@ body {
     pointer-events: none; 
 }
 
+/* Clase generada por JS para las chispas */
 .particle {
     position: absolute;
     background: var(--accent-color);
@@ -49,23 +53,40 @@ body {
     box-shadow: 0 0 12px var(--accent-color);
 }
 
-/* CURSOR PERSONALIZADO */
+/* =========================================
+   CURSOR PERSONALIZADO
+   ========================================= */
 .cursor-dot { 
-    position: fixed; width: 8px; height: 8px; background: var(--accent-color); 
-    border-radius: 50%; z-index: 10000; transform: translate(-50%, -50%); pointer-events: none; 
+    position: fixed; 
+    width: 8px; 
+    height: 8px; 
+    background: var(--accent-color); 
+    border-radius: 50%; 
+    z-index: 10000; 
+    transform: translate(-50%, -50%); 
+    pointer-events: none; 
 }
+
 .cursor-outline { 
-    position: fixed; width: 35px; height: 35px; border: 2px solid var(--accent-color); 
-    border-radius: 50%; z-index: 10000; transform: translate(-50%, -50%); pointer-events: none; 
+    position: fixed; 
+    width: 35px; 
+    height: 35px; 
+    border: 2px solid var(--accent-color); 
+    border-radius: 50%; 
+    z-index: 10000; 
+    transform: translate(-50%, -50%); 
+    pointer-events: none; 
     transition: transform 0.15s ease-out;
 }
 
-/* NAVEGACIÓN Y LOGO */
+/* =========================================
+   NAVEGACIÓN Y LOGO RLB
+   ========================================= */
 nav { 
     display: flex; 
     justify-content: space-between; 
     align-items: center;
-    padding: 15px 10%; /* Ajustado para que el logo no ocupe demasiado */
+    padding: 15px 10%; 
     position: fixed; 
     width: 100%; 
     z-index: 100; 
@@ -73,16 +94,21 @@ nav {
     border-bottom: 1px solid var(--glass-border);
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+}
+
 .nav-logo {
-    height: 45px; /* Altura controlada para el logo RLB */
+    height: 45px; /* Tamaño ideal para que no rompa el diseño */
     width: auto;
     display: block;
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .nav-logo:hover {
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 8px var(--accent-color)); /* Brillo al pasar el ratón */
+    transform: scale(1.1); /* Crece un poco al pasar el ratón */
+    filter: drop-shadow(0 0 10px var(--accent-color)); /* Brillo neón */
 }
 
 nav ul { 
@@ -104,7 +130,9 @@ nav ul li a:hover {
     color: var(--accent-color);
 }
 
-/* HERO SECTION */
+/* =========================================
+   SECCIONES Y BENTO GRID
+   ========================================= */
 .hero { 
     height: 100vh; 
     display: flex; 
@@ -114,10 +142,15 @@ nav ul li a:hover {
     text-align: center;
 }
 
-.hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); }
-.highlight { color: var(--accent-color); text-shadow: 0 0 20px rgba(0, 242, 255, 0.3); }
+.hero h1 { 
+    font-size: clamp(2.5rem, 8vw, 4rem); 
+}
 
-/* BENTO GRID */
+.highlight {
+    color: var(--accent-color);
+    text-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+}
+
 .bento-container {
     display: grid; 
     grid-template-columns: repeat(3, 1fr); 
@@ -133,16 +166,36 @@ nav ul li a:hover {
     border-radius: 24px;
     padding: 30px;
     backdrop-filter: blur(12px);
-    opacity: 0; 
+    opacity: 0; /* JS lo cambia a 1 al hacer scroll */
     transform: translateY(30px);
     transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.bento-item.visible { opacity: 1; transform: translateY(0); }
-.grande { grid-column: span 2; }
+.bento-item.visible { 
+    opacity: 1; 
+    transform: translateY(0); 
+}
 
-/* SKILLS TAGS */
-.skills-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+.bento-item:hover { 
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 30px rgba(0, 242, 255, 0.1);
+}
+
+/* Clase para cajas que ocupan el doble de ancho */
+.grande { 
+    grid-column: span 2; 
+}
+
+/* =========================================
+   ELEMENTOS INTERNOS (SKILLS Y FORM)
+   ========================================= */
+.skills-grid { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 10px; 
+    margin-top: 15px; 
+}
+
 .skills-grid span { 
     background: rgba(0, 242, 255, 0.1); 
     color: var(--accent-color); 
@@ -152,22 +205,45 @@ nav ul li a:hover {
     border: 1px solid rgba(0, 242, 255, 0.2);
 }
 
-/* FORMULARIO */
-.contact-form { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
-.contact-form input, .contact-form textarea { 
+.contact-form { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 12px; 
+    margin-top: 15px; 
+}
+
+.contact-form input, 
+.contact-form textarea { 
     background: rgba(255, 255, 255, 0.05); 
     border: 1px solid var(--glass-border); 
-    color: white; padding: 12px; border-radius: 10px; outline: none;
+    color: white; 
+    padding: 12px; 
+    border-radius: 10px;
+    outline: none;
 }
 
 .btn-send { 
-    background: var(--accent-color); color: #030712; border: none; 
-    padding: 12px; border-radius: 10px; font-weight: bold; width: 100%; cursor: none;
+    background: var(--accent-color); 
+    color: #030712; 
+    border: none; 
+    padding: 12px; 
+    border-radius: 10px; 
+    font-weight: bold; 
+    width: 100%; 
+    transition: 0.3s;
 }
 
-/* RESPONSIVIDAD */
+/* =========================================
+   RESPONSIVIDAD (MÓVILES)
+   ========================================= */
 @media (max-width: 900px) {
-    .bento-container { grid-template-columns: 1fr; }
-    .grande { grid-column: span 1; }
-    nav { padding: 15px 5%; }
+    .bento-container {
+        grid-template-columns: 1fr;
+    }
+    .grande {
+        grid-column: span 1;
+    }
+    nav {
+        padding: 15px 5%;
+    }
 }
