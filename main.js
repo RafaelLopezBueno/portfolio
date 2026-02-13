@@ -1,6 +1,6 @@
 /**
  * ARCHIVO: main.js
- * Rafael López Bueno
+ * Rafael López Bueno -
  * Lógica: Cursor interactivo, Partículas de fondo, Escritura y Revelado de Scroll.
  */
 
