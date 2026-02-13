@@ -1,6 +1,6 @@
 /**
  * ARCHIVO: main.js
- * Rafael López Bueno - Portafolio DAW
+ * Rafael López Bueno
  * Lógica: Cursor interactivo, Partículas de fondo, Escritura y Revelado de Scroll.
  */
 
@@ -19,12 +19,13 @@ window.addEventListener("mousemove", (e) => {
     cursorDot.style.left = `${posX}px`;
     cursorDot.style.top = `${posY}px`;
 
+    // Animación fluida del contorno (retraso sutil para efecto orgánico)
     cursorOutline.animate({
         left: `${posX}px`,
         top: `${posY}px`
     }, { duration: 250, fill: "forwards" });
 
-    // Creación de partículas (ajustado para que no sature la pantalla)
+    // Creación de chispas/partículas al mover el ratón
     if (Math.random() > 0.85) {
         createParticle(posX, posY);
     }
@@ -35,18 +36,16 @@ function createParticle(x, y) {
     const p = document.createElement("div");
     p.classList.add("particle");
     
-    // Tamaño aleatorio para variedad visual
+    // Tamaño aleatorio para profundidad visual
     const size = Math.random() * 4 + 2; 
     p.style.width = `${size}px`;
     p.style.height = `${size}px`;
-    
-    // Posición inicial
     p.style.left = `${x}px`;
     p.style.top = `${y}px`;
 
     bgCanvas.appendChild(p);
 
-    // Dirección de movimiento aleatoria
+    // Explosión aleatoria
     const destX = (Math.random() - 0.5) * 120;
     const destY = (Math.random() - 0.5) * 120;
 
@@ -58,7 +57,7 @@ function createParticle(x, y) {
         easing: 'ease-out'
     });
 
-    // Eliminar del DOM al terminar para mantener el rendimiento
+    // Eliminar del DOM para no sobrecargar el navegador
     animation.onfinish = () => p.remove();
 }
 
@@ -77,14 +76,14 @@ function typeWriter() {
 // 5. ANIMACIÓN DE REVELADO (Intersection Observer)
 const revealOnScroll = () => {
     const observerOptions = {
-        threshold: 0.15
+        threshold: 0.15 // Se activa cuando el 15% del elemento es visible
     };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("visible");
-                observer.unobserve(entry.target); // Animación solo la primera vez
+                observer.unobserve(entry.target); // Solo se anima una vez
             }
         });
     }, observerOptions);
@@ -95,8 +94,10 @@ const revealOnScroll = () => {
 };
 
 // 6. EFECTO DE HOVER PARA EL CURSOR
+// Ahora detecta automáticamente las tarjetas de proyecto al ser enlaces <a>
 const handleHover = () => {
-    const targets = document.querySelectorAll("a, button, .bento-item");
+    // Seleccionamos todos los elementos interactivos
+    const targets = document.querySelectorAll("a, button, .bento-item, .project-mini-card");
     
     targets.forEach(target => {
         target.addEventListener("mouseenter", () => {
@@ -112,13 +113,15 @@ const handleHover = () => {
 
 // 7. INICIALIZACIÓN GLOBAL
 window.addEventListener("DOMContentLoaded", () => {
-    // Iniciar escritura con un pequeño retraso
+    // Iniciar efecto de escritura
     if (highlight) {
         highlight.innerHTML = "";
         setTimeout(typeWriter, 600);
     }
 
-    // Activar funciones
+    // Activar scroll reveal
     revealOnScroll();
-    handleHover();
+    
+    // Ejecutar listeners de hover tras un breve delay para asegurar carga de estilos
+    setTimeout(handleHover, 100);
 });
