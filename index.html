@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio profesional de Rafael López Bueno. Desarrollador web con enfoque en UI, UX, rendimiento y resultados reales.">
+    <meta name="keywords" content="Desarrollador Web, Portafolio, Rafael López, Frontend, JavaScript, CSS, DAW">
+    <title>Rafael López Bueno | Desarrollo Web Profesional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylePortfolio.css">
+</head>
+<body>
+    <div id="bg-canvas"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <header class="topbar">
+        <nav class="nav-bar" aria-label="Navegación principal">
+            <a class="logo" href="#inicio">
+                <span class="logo-mark">RLB</span>
+                <span class="logo-label">Rafael López Bueno</span>
+            </a>
+            <ul class="nav-list">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Perfil</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero reveal">
+            <div class="hero-overlay"></div>
+            <div class="hero-panel">
+                <p class="eyebrow">Desarrollo Web Profesional</p>
+                <h1>Construyo experiencias digitales modernas, accesibles y escalables.</h1>
+                <p class="hero-copy">Diseño y desarrollo soluciones digitales donde el rendimiento, la usabilidad y la calidad del código se convierten en ventajas competitivas.</p>
+                <div class="hero-actions">
+                    <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
+                    <a href="#contacto" class="btn btn-outline">Hablemos</a>
+                </div>
+                <div class="hero-highlights">
+                    <div class="highlight-card">
+                        <p class="value">+3</p>
+                        <p class="label">Proyectos reales</p>
+                    </div>
+                    <div class="highlight-card">
+                        <p class="value">100%</p>
+                        <p class="label">Responsive</p>
+                    </div>
+                    <div class="highlight-card">
+                        <p class="value">0.95</p>
+                        <p class="label">Usabilidad</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-card reveal-card" data-tilt>
+                    <div class="hero-card__meta">Casos de uso</div>
+                    <h2 class="hero-card__title">Proyectos en producción</h2>
+                    <ul class="hero-card__list">
+                        <li>SistemDev: web corporativa</li>
+                        <li>Fix Informático: plataforma de servicios</li>
+                        <li>CryptoPulse: dashboard en tiempo real</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>Scroll</span>
+                <div class="arrow"></div>
+            </div>
+        </section>
+
+        <section id="sobre-mi" class="about reveal">
+            <div class="section-header">
+                <span class="section-label">Perfil</span>
+                <h2>Desarrollo web con enfoque técnico y diseño orientado a negocio</h2>
+                <p>Trabajo para ofrecer productos digitales sólidos que se adaptan a usuarios reales, optimizan conversiones y mantienen una estructura de código escalable.</p>
+            </div>
+            <div class="about-grid">
+                <article class="about-card reveal-card" data-tilt>
+                    <h3>Mi enfoque</h3>
+                    <p>Combino buenas prácticas, rendimiento y usabilidad para entregar soluciones que se ven bien y funcionan mejor.</p>
+                    <ul>
+                        <li>Interfaces limpias y accesibles</li>
+                        <li>Optimización de carga y rendimiento</li>
+                        <li>España / proyectos remotos</li>
+                    </ul>
+                </article>
+                <article class="about-card reveal-card" data-tilt>
+                    <h3>Herramientas</h3>
+                    <div class="skills-grid">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                        <span>Java</span>
+                        <span>PHP</span>
+                        <span>Git</span>
+                        <span>VS Code</span>
+                    </div>
+                </article>
+                <article class="about-card reveal-card" data-tilt>
+                    <h3>Valor añadido</h3>
+                    <ul>
+                        <li>Comunicación clara con el cliente</li>
+                        <li>Entrega eficiente y puntual</li>
+                        <li>Actualizaciones simples y escalables</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section id="proyectos" class="projects reveal">
+            <div class="section-header">
+                <span class="section-label">Trabajo</span>
+                <h2>Proyectos seleccionados</h2>
+                <p>Casos de estudio que reflejan un enfoque profesional en diseño, soporte y entrega técnica.</p>
+            </div>
+            <div class="projects-grid">
+                <article class="project-card reveal-card" data-tilt>
+                    <div class="project-card__top">
+                        <span>Web Corporativa</span>
+                        <span>SistemDev</span>
+                    </div>
+                    <h3>SistemDev</h3>
+                    <p>Web corporativa profesional diseñada para presentar servicios, generar confianza y facilitar contacto comercial.</p>
+                    <a class="project-link" href="https://sistemdev.es" target="_blank" rel="noopener noreferrer">Ver proyecto</a>
+                </article>
+                <article class="project-card reveal-card" data-tilt>
+                    <div class="project-card__top">
+                        <span>Marca personal</span>
+                        <span>Fix Informático</span>
+                    </div>
+                    <h3>Fix Informático</h3>
+                    <p>Landing page corporativa enfocada en conversión y servicio, con un diseño claro y llamadas a la acción efectivas.</p>
+                    <a class="project-link" href="https://fixinformatico.com" target="_blank" rel="noopener noreferrer">Ver proyecto</a>
+                </article>
+                <article class="project-card reveal-card" data-tilt>
+                    <div class="project-card__top">
+                        <span>Dashboard</span>
+                        <span>CryptoPulse</span>
+                    </div>
+                    <h3>CryptoPulse</h3>
+                    <p>Dashboard interactivo para seguimiento de activos con datos en tiempo real e interfaz dinámica.</p>
+                    <a class="project-link" href="https://rafaellopezbueno.github.io/CryptoPulse/" target="_blank" rel="noopener noreferrer">Ver proyecto</a>
+                </article>
+                <article class="project-card reveal-card" data-tilt>
+                    <div class="project-card__top">
+                        <span>Dashboard</span>
+                        <span>FinanceFlow</span>
+                    </div>
+                    <h3>FinanceFlow</h3>
+                    <p>Plataforma de gestión financiera con enfoque en experiencia de usuario y análisis de gastos.</p>
+                    <a class="project-link" href="https://rafaellopezbueno.github.io/Gestor-de-finanzas/" target="_blank" rel="noopener noreferrer">Ver proyecto</a>
+                    <span class="tech-tag">Full Stack</span>
+                </article>
+            </div>
+        </section>
+
+        <section id="contacto" class="contact reveal">
+            <div class="section-header">
+                <span class="section-label">Contacto</span>
+                <h2>Trabajemos juntos en tu próximo proyecto</h2>
+                <p>Escribe tus ideas y recibirás una propuesta clara y estructurada en breve.</p>
+            </div>
+            <div class="contact-layout">
+                <div class="contact-info reveal-card" data-tilt>
+                    <h3>Conecta conmigo</h3>
+                    <p>Disponible para proyectos web, landing pages, aplicaciones y mejoras de presencia digital.</p>
+                    <ul>
+                        <li><strong>Email:</strong> <a href="mailto:rlopezbueno06@gmail.com">rlopezbueno06@gmail.com</a></li>
+                        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/rafael-l%C3%B3pez-bueno-133a22369/" target="_blank" rel="noopener noreferrer">linkedin.com/in/rafael-l%C3%B3pez-bueno-133a22369</a></li>
+                        <li><strong>GitHub:</strong> <a href="https://github.com/RafaelLopezBueno" target="_blank" rel="noopener noreferrer">github.com/RafaelLopezBueno</a></li>
+                    </ul>
+                </div>
+                <form class="contact-form reveal-card" id="contact-form" action="https://formsubmit.co/rlopezbueno06@gmail.com" method="POST">
+                    <label class="input-group">
+                        <span>Nombre</span>
+                        <input type="text" name="name" placeholder="Tu nombre" required>
+                    </label>
+                    <label class="input-group">
+                        <span>Correo</span>
+                        <input type="email" name="email" placeholder="Tu correo electrónico" required>
+                    </label>
+                    <label class="input-group">
+                        <span>Mensaje</span>
+                        <textarea name="message" placeholder="Cuéntame en qué puedo ayudarte..." rows="5" required></textarea>
+                    </label>
+                    <input type="hidden" name="_subject" value="Nuevo mensaje desde portfolio">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://rafaellopezbueno.github.io">
+                    <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+                    <p class="form-status"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>© 2026 Rafael López Bueno. Desarrollo web profesional.</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
